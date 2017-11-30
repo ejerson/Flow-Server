@@ -1,5 +1,6 @@
 package edu.cnm.deepdive.capstone.flashserver.entities;
 
+import java.util.LinkedList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -19,10 +20,9 @@ public class User {
   private String userName;
   private String timeStamp;
 
-  @OneToMany(fetch = FetchType.EAGER)
-  private List<Deck> deck;
+  @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
+  private List<Deck> decks = new LinkedList<>();
 
-// TODO - Add OneToMany to Deck
   public long getId() {
     return id;
   }
@@ -51,11 +51,11 @@ public class User {
     this.timeStamp = timeStamp;
   }
 
-  public List<Deck> getDeck() {
-    return deck;
+  public List<Deck> getDecks() {
+    return decks;
   }
 
-  public void setDeck(List<Deck> deck) {
-    this.deck = deck;
+  public void setDecks(List<Deck> decks) {
+    this.decks = decks;
   }
 }

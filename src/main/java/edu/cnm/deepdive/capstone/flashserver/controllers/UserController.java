@@ -11,3 +11,4 @@ public interface UserController extends PagingAndSortingRepository<User, Long> {
 
   List<User> findByUserName(@Param("username") String userName);
 }
+
