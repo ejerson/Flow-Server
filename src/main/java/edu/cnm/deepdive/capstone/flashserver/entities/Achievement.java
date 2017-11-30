@@ -1,15 +1,15 @@
 package edu.cnm.deepdive.capstone.flashserver.entities;
 
-import java.sql.Timestamp;
+
 import java.util.Date;
-import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+
 
 @Entity
 public class Achievement {
@@ -19,29 +19,21 @@ public class Achievement {
   @GeneratedValue(strategy = GenerationType.AUTO)
   private long id;
 
-
-  @OneToOne(mappedBy = "user")
-  private User user;
-
-
   private Date created;
 
-  private List<Deck> trackDeck;
+
+
   private String trackAchievement;
+
+  @OneToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "configuration_id")
+  private Configuration configuration;
 
 
 
 
   public long getId() {
     return id;
-  }
-
-  public List<Deck> getTrackDeck() {
-    return trackDeck;
-  }
-
-  public void setTrackDeck(List<Deck> trackDeck) {
-    this.trackDeck = trackDeck;
   }
 
   public String getTrackAchievement() {
@@ -52,16 +44,15 @@ public class Achievement {
     this.trackAchievement = trackAchievement;
   }
 
-  public User getUser() {
-    return user;
-  }
-
-  public void setUser(User user) {
-    this.user = user;
-  }
-
   public Date getCreated() {
     return created;
   }
-  
+
+  public Configuration getConfiguration() {
+    return configuration;
+  }
+
+  public void setConfiguration(Configuration configuration) {
+    this.configuration = configuration;
+  }
 }

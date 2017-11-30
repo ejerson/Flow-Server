@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 
@@ -17,21 +18,19 @@ public class Card {
 private long id;
 
   private Date created;
-
   private String front;
-
   private String back;
-
   private String imageOne;
-
   private String imageTwo;
-
   private String imageThree;
-
   private String imageFour;
 
-  @OneToMany(mappedBy = "deck")
+  @ManyToOne
   private Deck deck;
+
+  public long getId() {
+    return id;
+  }
 
   public String getFront() {
     return front;
@@ -88,11 +87,12 @@ private long id;
   public void setDeck(Deck deck) {
     this.deck = deck;
   }
-  public long getId() {
-    return id;
-  }
 
   public Date getCreated() {
     return created;
+  }
+
+  public void setCreated(Date created) {
+    this.created = created;
   }
 }

@@ -2,21 +2,20 @@ package edu.cnm.deepdive.capstone.flashserver.entities;
 
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
-import org.springframework.data.annotation.Id;
+
 
 @Entity
-
 public class Configuration {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-
   private long id;
-
-  public long deckId;
 
   public long duration;
 
@@ -30,14 +29,18 @@ public class Configuration {
 
   public int counter;
 
+  public int achievementCounter;
+
+  @OneToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "deck_id")
+  public Deck deck;
+
+  @OneToOne(mappedBy = "configuration")
+  private Achievement achievement;
+
   public long getId() {
     return id;
   }
-
-  public int achievementCounter;
-
-  @OneToOne(mappedBy = "deck")
-  public Deck deck;
 
   public long getDuration() {
     return duration;
@@ -71,9 +74,6 @@ public class Configuration {
     this.deckIcon = deckIcon;
   }
 
-  public long getDeckId() {
-    return deckId; }
-
   public int getAchievementCounter () {
     return achievementCounter;
   }
@@ -82,8 +82,20 @@ public class Configuration {
     this.achievementCounter = achievementCounter;
   }
 
+  public int getCounter() {
+    return counter;
+  }
+
+  public void setCounter(int counter) {
+    this.counter = counter;
+  }
+
   public Date getCreated() {
     return created;
+  }
+
+  public void setCreated(Date created) {
+    this.created = created;
   }
 
   public Deck getDeck() {
