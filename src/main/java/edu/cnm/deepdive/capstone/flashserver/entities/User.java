@@ -1,7 +1,9 @@
 package edu.cnm.deepdive.capstone.flashserver.entities;
 
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -16,9 +18,17 @@ public class User {
   @GeneratedValue(strategy = GenerationType.AUTO)
   private long id;
 
+  @Column(nullable = false)
   private String emailAddress;
+
+  @Column(nullable = false)
   private String userName;
-  private String timeStamp;
+
+  //TODO fix timeStamp so it is no longer null
+  private Date created;
+
+  @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
+  private List<Achievement> achievements = new LinkedList<>();
 
   @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
   private List<Deck> decks = new LinkedList<>();
@@ -43,19 +53,28 @@ public class User {
     this.userName = userName;
   }
 
-  public String getTimeStamp() {
-    return timeStamp;
-  }
-
-  public void setTimeStamp(String timeStamp) {
-    this.timeStamp = timeStamp;
-  }
-
   public List<Deck> getDecks() {
     return decks;
   }
 
   public void setDecks(List<Deck> decks) {
     this.decks = decks;
+  }
+
+  public Date getCreated() {
+    return created;
+  }
+
+  public void setCreated(Date created) {
+    this.created = created;
+  }
+
+  public List<Achievement> getAchievements() {
+    return achievements;
+  }
+
+  public void setAchievements(
+      List<Achievement> achievements) {
+    this.achievements = achievements;
   }
 }

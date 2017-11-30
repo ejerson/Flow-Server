@@ -1,6 +1,5 @@
 package edu.cnm.deepdive.capstone.flashserver.entities;
 
-
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -8,12 +7,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-
 
 @Entity
 public class Achievement {
-
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
@@ -21,27 +19,16 @@ public class Achievement {
 
   private Date created;
 
-
-
-  private String trackAchievement;
-
   @OneToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "configuration_id")
   private Configuration configuration;
 
-
-
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "user_id")
+  private User user;
 
   public long getId() {
     return id;
-  }
-
-  public String getTrackAchievement() {
-    return trackAchievement;
-  }
-
-  public void setTrackAchievement(String trackAchievement) {
-    this.trackAchievement = trackAchievement;
   }
 
   public Date getCreated() {
@@ -54,5 +41,9 @@ public class Achievement {
 
   public void setConfiguration(Configuration configuration) {
     this.configuration = configuration;
+  }
+
+  public void setCreated(Date created) {
+    this.created = created;
   }
 }
