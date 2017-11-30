@@ -23,5 +23,5 @@ dist/
 nbdist/
 .nb-gradle/
 src/main/resources/application.properties
-#derby.log
-#flowdb/
+derby.log
+flowdb/
