@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity(name = "Flowwer")
 public class User {
@@ -24,7 +26,8 @@ public class User {
   @Column(nullable = false)
   private String userName;
 
-  //TODO fix timeStamp so it is no longer null
+  @Column(nullable = false, insertable = false, updatable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+  @Temporal(TemporalType.TIMESTAMP)
   private Date created;
 
   @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
@@ -63,10 +66,6 @@ public class User {
 
   public Date getCreated() {
     return created;
-  }
-
-  public void setCreated(Date created) {
-    this.created = created;
   }
 
   public List<Achievement> getAchievements() {
