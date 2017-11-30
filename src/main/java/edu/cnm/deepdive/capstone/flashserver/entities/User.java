@@ -12,27 +12,39 @@ public class User {
   @GeneratedValue(strategy = GenerationType.AUTO)
   private long id;
 
-  private String firstName;
+  private String emailAddress;
 
-  private String lastName;
+  private String userName;
+
+  private String timeStamp;
 
   public long getId() {
     return id;
   }
 
-  public String getFirstName() {
-    return firstName;
+
+  public String getEmailAddress() {
+    return emailAddress;
   }
 
-  public void setFirstName(String firstName) {
-    this.firstName = firstName;
+  public void setEmailAddress(String emailAddress) {
+    this.emailAddress = emailAddress;
   }
 
-  public String getLastName() {
-    return lastName;
+  public String getUserName() {
+    return userName;
   }
 
-  public void setLastName(String lastName) {
-    this.lastName = lastName;
+  public void setUserName(String userName) {
+    this.userName = userName;
   }
+
+  public String getTimeStamp() {
+    return timeStamp;
+  }
+
+  public void setTimeStamp(String timeStamp) {
+    this.timeStamp = timeStamp;
+  }
+
 }
