@@ -98,7 +98,4 @@ private long id;
     return created;
   }
 
-  public void setCreated(Date created) {
-    this.created = created;
-  }
 }

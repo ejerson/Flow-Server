@@ -48,7 +48,4 @@ public class Achievement {
     this.configuration = configuration;
   }
 
-  public void setCreated(Date created) {
-    this.created = created;
-  }
 }

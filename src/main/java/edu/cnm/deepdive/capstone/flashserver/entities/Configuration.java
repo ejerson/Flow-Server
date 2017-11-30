@@ -99,10 +99,6 @@ public class Configuration {
     return created;
   }
 
-  public void setCreated(Date created) {
-    this.created = created;
-  }
-
   public Deck getDeck() {
     return deck;
   }
