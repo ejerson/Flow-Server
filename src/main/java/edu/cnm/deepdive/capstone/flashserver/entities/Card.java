@@ -28,7 +28,6 @@ private long id;
   @JoinColumn(name = "deck_id")
   private Deck deck;
 
-  // TODO - May be an enum for this field.
   private int level;
 
   private String front;

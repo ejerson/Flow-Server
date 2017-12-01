@@ -31,8 +31,7 @@ public class Configuration {
   @OneToOne(mappedBy = "configuration")
   private Achievement achievement;
 
-// TODO - Make cardLevel enum it's own class.
-//  public enum cardLevel {1, 2, 3, 4, 5, 6, 7}
+  private int cardLevel;
 
 
   private int duration;
@@ -114,5 +113,12 @@ public class Configuration {
     this.deck = deck;
   }
 
+  public int getCardLevel() {
+    return cardLevel;
+  }
+
+  public void setCardLevel(int cardLevel) {
+    this.cardLevel = cardLevel;
+  }
 }
 
