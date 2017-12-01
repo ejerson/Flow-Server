@@ -9,6 +9,6 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 @RepositoryRestResource(collectionResourceRel = "configuration", path="configuration")
 public interface ConfigurationController extends PagingAndSortingRepository<Configuration, Long> {
-
+//TODO review/confirm id settings.
   List<Configuration> findConfigurationsBy(@Param("deck_Id") String deck_Id);
 }
