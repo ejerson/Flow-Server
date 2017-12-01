@@ -23,6 +23,14 @@ private long id;
   @Column(nullable = false, insertable = false, updatable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
   @Temporal(TemporalType.TIMESTAMP)
   private Date created;
+
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "deck_id")
+  private Deck deck;
+
+  // TODO - May be an enum for this field.
+  private int level;
+
   private String front;
   private String back;
   private String imageOne;
@@ -30,9 +38,7 @@ private long id;
   private String imageThree;
   private String imageFour;
 
-  @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "deck_id")
-  private Deck deck;
+
 
   public long getId() {
     return id;
@@ -96,6 +102,14 @@ private long id;
 
   public Date getCreated() {
     return created;
+  }
+
+  public int getLevel() {
+    return level;
+  }
+
+  public void setLevel(int level) {
+    this.level = level;
   }
 
 }

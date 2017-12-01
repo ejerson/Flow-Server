@@ -16,21 +16,35 @@ import javax.persistence.TemporalType;
 @Entity
 public class Achievement {
 
+  // TODO - Needs link to consecutive days.
+  private int achievementPoint;
+  private String achievementDescription;
+
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private long id;
+
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "user_id")
+  private User user;
 
   @Column(nullable = false, insertable = false, updatable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
   @Temporal(TemporalType.TIMESTAMP)
   private Date created;
 
+  // TODO - Link to consecutive days and achievement point.
+  @Column(nullable = false, insertable = false, updatable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+  @Temporal(TemporalType.TIMESTAMP)
+  private Date goalAchieved;
+
+
   @OneToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "configuration_id")
   private Configuration configuration;
 
-  @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "user_id")
-  private User user;
+
+
+
 
   public long getId() {
     return id;

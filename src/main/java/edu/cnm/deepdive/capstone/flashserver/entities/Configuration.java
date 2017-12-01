@@ -20,21 +20,9 @@ public class Configuration {
   @GeneratedValue(strategy = GenerationType.AUTO)
   private long id;
 
-  public long duration;
-
-  public long consecutiveDays;
-
-  public long timer;
-
   @Column(nullable = false, insertable = false, updatable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
   @Temporal(TemporalType.TIMESTAMP)
   private Date created;
-
-  public String deckIcon;
-
-  public int counter;
-
-  public int achievementCounter;
 
   @OneToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "deck_id")
@@ -43,24 +31,43 @@ public class Configuration {
   @OneToOne(mappedBy = "configuration")
   private Achievement achievement;
 
+// TODO - Make cardLevel enum it's own class.
+//  public enum cardLevel {1, 2, 3, 4, 5, 6, 7}
+
+
+  private int duration;
+
+  // TODO Link to goalAchieved, achievementDescription, and achievementPoint.
+  private int consecutiveDays;
+
+  private long timer;
+
+  private String deckIcon;
+
+  private int counter;
+
+  private int achievementCounter;
+
+
+
   public long getId() {
     return id;
   }
 
-  public long getDuration() {
+  public int getDuration() {
     return duration;
   }
 
-  public void setDuration(long duration) {
+  public void setDuration(int duration) {
     this.duration = duration;
   }
 
-  public long getConsecutive_days() {
+  public int getConsecutiveDays() {
     return consecutiveDays;
   }
 
-  public void setConsecutive_days(long consecutive_days) {
-    this.consecutiveDays = consecutive_days;
+  public void setConsecutiveDays(int consecutiveDays) {
+    this.consecutiveDays = consecutiveDays;
   }
 
   public long getTimer() {
