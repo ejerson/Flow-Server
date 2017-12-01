@@ -9,6 +9,6 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 @RepositoryRestResource(collectionResourceRel = "achievements" , path = "achievements")
 public interface AchievementController extends PagingAndSortingRepository<Achievement,Long> {
 
-  List<Achievement> findByuniqueId(@Param("uniqueId") String uniqueId);
+  List<Achievement> findByachievementId(@Param("achievementId") String achievementId);
 
 }
