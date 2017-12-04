@@ -30,6 +30,7 @@ public class User {
   @Temporal(TemporalType.TIMESTAMP)
   private Date created;
 
+  //TODO: This should be one to one
   @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
   private List<Achievement> achievements = new LinkedList<>();
 

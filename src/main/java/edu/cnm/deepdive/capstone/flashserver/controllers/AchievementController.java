@@ -9,7 +9,5 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 @RepositoryRestResource(collectionResourceRel = "achievements" , path = "achievements")
 public interface AchievementController extends PagingAndSortingRepository<Achievement,Long> {
 
-  //TODO review/confirm Id settings
-  List<Achievement> findByachievementId(@Param("achievementId") String achievementId);
 
 }

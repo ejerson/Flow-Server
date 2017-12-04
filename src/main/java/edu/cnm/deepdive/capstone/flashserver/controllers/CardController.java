@@ -10,6 +10,5 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 @RepositoryRestResource(collectionResourceRel = "cards", path = "cards")
 public interface CardController extends PagingAndSortingRepository<Card, Long> {
 
-  List<Card> findByFront(@Param("front") String front);
 }
 

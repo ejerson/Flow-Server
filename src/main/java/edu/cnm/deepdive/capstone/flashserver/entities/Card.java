@@ -36,8 +36,7 @@ private long id;
   private String imageTwo;
   private String imageThree;
   private String imageFour;
-
-
+  private String reviewStatus;
 
   public long getId() {
     return id;
