@@ -110,4 +110,11 @@ private long id;
     this.level = level;
   }
 
+  public String getReviewStatus() {
+    return reviewStatus;
+  }
+
+  public void setReviewStatus(String reviewStatus) {
+    this.reviewStatus = reviewStatus;
+  }
 }
