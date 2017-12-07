@@ -1,10 +1,9 @@
 package edu.cnm.deepdive.capstone.flashserver.entities;
 
-import java.sql.Timestamp;
 import java.util.Date;
-import javax.persistence.Column;
 import java.util.LinkedList;
 import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -14,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.TableGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -21,7 +21,9 @@ import javax.persistence.TemporalType;
 public class Deck {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @TableGenerator(name = "deckid", allocationSize = 1)
+  @GeneratedValue(strategy = GenerationType.TABLE, generator = "deckid")
+  @Column(name = "id")
   private long id;
 
   private String deckName;
@@ -39,11 +41,24 @@ public class Deck {
   @OneToOne(mappedBy = "deck")
   private Configuration configuration;
 
+
+  public List<Card> getCards() {
+    return cards;
+  }
+
+  public void setCards(List<Card> cards) {
+    this.cards = cards;
+  }
+
   @OneToMany(mappedBy = "deck")
   private List<Card> cards = new LinkedList<>();
 
   public long getId() {
     return id;
+  }
+
+  public void setId(long id) {
+    this.id = id;
   }
 
   public String getDeckName() {
@@ -89,6 +104,5 @@ public class Deck {
   public void setUser(User user) {
     this.user = user;
   }
-
 
 }
