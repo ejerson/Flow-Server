@@ -31,7 +31,9 @@ public class Configuration {
   @OneToOne(mappedBy = "configuration")
   private Achievement achievement;
 
-  private int deck_id;
+//  private String reviewStatus;
+
+  private int selectedDeck;
 
   private int session;
 
@@ -39,8 +41,6 @@ public class Configuration {
 
   private int review_pool;  //cards
 
-  // TODO Link to goalAchieved, achievementDescription, and achievementPoint.
-  private int consecutiveDays;
 
   //private int cardLevel; //per Edge
 
@@ -63,14 +63,6 @@ public class Configuration {
 
   public void setDuration(int duration) {
     this.duration = duration;
-  }
-
-  public int getConsecutiveDays() {
-    return consecutiveDays;
-  }
-
-  public void setConsecutiveDays(int consecutiveDays) {
-    this.consecutiveDays = consecutiveDays;
   }
 
   public Date getCreated() {
@@ -101,12 +93,12 @@ public class Configuration {
     this.review_pool = review_pool;
   }
 
-  public int getDeck_id() {
-    return deck_id;
+  public int getSelectedDeck() {
+    return selectedDeck;
   }
 
-  public void setDeck_id(int deck_id) {
-    this.deck_id = deck_id;
+  public void setSelectedDeck(int selectedDeck) {
+    this.selectedDeck = selectedDeck;
   }
 }
 

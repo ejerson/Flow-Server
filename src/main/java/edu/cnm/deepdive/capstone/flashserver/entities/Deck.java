@@ -3,6 +3,7 @@ package edu.cnm.deepdive.capstone.flashserver.entities;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -50,7 +51,7 @@ public class Deck {
     this.cards = cards;
   }
 
-  @OneToMany(mappedBy = "deck")
+  @OneToMany(mappedBy = "deck", cascade= CascadeType.ALL)
   private List<Card> cards = new LinkedList<>();
 
   public long getId() {
