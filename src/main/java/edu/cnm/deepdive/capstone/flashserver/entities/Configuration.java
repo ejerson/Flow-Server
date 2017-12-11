@@ -31,22 +31,26 @@ public class Configuration {
   @OneToOne(mappedBy = "configuration")
   private Achievement achievement;
 
-  private int cardLevel;
+  private int deck_id;
 
+  private int session;
 
   private int duration;
+
+  private int review_pool;  //cards
 
   // TODO Link to goalAchieved, achievementDescription, and achievementPoint.
   private int consecutiveDays;
 
-  private long timer;
+  //private int cardLevel; //per Edge
 
-  private String deckIcon;
+  //private long timer;  //per Edge
 
-  private int counter;
+  //private String deckIcon; //per Edge
 
-  private int achievementCounter;
+  //private int counter; //per Edge
 
+  //private int achievementCounter; //per Edge
 
 
   public long getId() {
@@ -69,38 +73,6 @@ public class Configuration {
     this.consecutiveDays = consecutiveDays;
   }
 
-  public long getTimer() {
-    return timer;
-  }
-
-  public void setTimer(long timer) {
-    this.timer = timer;
-  }
-
-  public String getDeckIcon() {
-    return deckIcon;
-  }
-
-  public void setDeckIcon(String deckIcon) {
-    this.deckIcon = deckIcon;
-  }
-
-  public int getAchievementCounter () {
-    return achievementCounter;
-  }
-
-  public void setAchievementCounter ( int achievementCounter){
-    this.achievementCounter = achievementCounter;
-  }
-
-  public int getCounter() {
-    return counter;
-  }
-
-  public void setCounter(int counter) {
-    this.counter = counter;
-  }
-
   public Date getCreated() {
     return created;
   }
@@ -113,12 +85,28 @@ public class Configuration {
     this.deck = deck;
   }
 
-  public int getCardLevel() {
-    return cardLevel;
+  public int getSession() {
+    return session;
   }
 
-  public void setCardLevel(int cardLevel) {
-    this.cardLevel = cardLevel;
+  public void setSession(int session) {
+    this.session = session;
+  }
+
+  public int getReview_pool() {
+    return review_pool;
+  }
+
+  public void setReview_pool(int review_pool) {
+    this.review_pool = review_pool;
+  }
+
+  public int getDeck_id() {
+    return deck_id;
+  }
+
+  public void setDeck_id(int deck_id) {
+    this.deck_id = deck_id;
   }
 }
 
