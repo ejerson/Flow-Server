@@ -10,5 +10,6 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 @RepositoryRestResource(collectionResourceRel = "configurations", path = "configurations")
 public interface ConfigurationController extends PagingAndSortingRepository<Configuration, Long> {
 
+  List<Configuration> findBySelectedDeck(@Param("selecteddeck") String selectedDeck);
 
 }
