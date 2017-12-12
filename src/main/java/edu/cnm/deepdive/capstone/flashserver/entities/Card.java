@@ -16,9 +16,9 @@ import javax.persistence.TemporalType;
 @Entity
 public class Card {
 
-@Id
-@GeneratedValue(strategy = GenerationType.AUTO)
-private long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  private long id;
 
   @Column(nullable = false, insertable = false, updatable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
   @Temporal(TemporalType.TIMESTAMP)
@@ -28,6 +28,10 @@ private long id;
   @JoinColumn(name = "deck_id")
   private Deck deck;
 
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "configuration_id")
+  private Configuration configuration;
+
   private int level;
 
   private String front;
@@ -36,6 +40,8 @@ private long id;
   private String imageTwo;
   private String imageThree;
   private String imageFour;
+
+
   private String reviewStatus;
 
   public long getId() {
@@ -116,5 +122,13 @@ private long id;
 
   public void setReviewStatus(String reviewStatus) {
     this.reviewStatus = reviewStatus;
+  }
+
+  public Configuration getConfiguration() {
+    return configuration;
+  }
+
+  public void setConfiguration(Configuration configuration) {
+    this.configuration = configuration;
   }
 }

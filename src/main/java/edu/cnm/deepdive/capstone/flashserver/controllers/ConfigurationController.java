@@ -8,8 +8,10 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 @RepositoryRestResource(collectionResourceRel = "configurations", path = "configurations")
-public interface ConfigurationController extends PagingAndSortingRepository<Configuration, Long> {
+interface ConfigurationController
+    extends PagingAndSortingRepository<Configuration, Long> {
 
-  List<Configuration> findBySelectedDeck(@Param("selecteddeck") String selectedDeck);
+  List<Configuration> findBySelectedDeck(@Param("selecteddeck") int selectedDeck);
 
+  // TODO assign cards for a new configuration
 }

@@ -1,6 +1,13 @@
 package edu.cnm.deepdive.capstone.flashserver.entities;
 
+import edu.cnm.deepdive.capstone.flashserver.BeanUtil;
+import edu.cnm.deepdive.capstone.flashserver.controllers.CardController;
+import java.util.Collections;
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.stream.Collectors;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -8,7 +15,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.PrePersist;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -24,12 +34,15 @@ public class Configuration {
   @Temporal(TemporalType.TIMESTAMP)
   private Date created;
 
-  @OneToOne(fetch = FetchType.EAGER)
+  @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "deck_id")
   public Deck deck;
 
   @OneToOne(mappedBy = "configuration")
   private Achievement achievement;
+
+  @OneToMany(mappedBy = "configuration", cascade= CascadeType.ALL)
+  private List<Card> cards = new LinkedList<>();
 
 //  private String reviewStatus;
 
@@ -100,5 +113,27 @@ public class Configuration {
   public void setSelectedDeck(int selectedDeck) {
     this.selectedDeck = selectedDeck;
   }
+
+  public List<Card> getCards() {
+    return cards;
+  }
+
+  public void setCards(List<Card> cards) {
+    this.cards = cards;
+  }
+
+  @PrePersist
+  private void selectCards() {
+    CardController cardController = BeanUtil.getBean(CardController.class);
+    List<Card> available = cardController.findAvailableByDeck(getDeck().getId());
+    Collections.shuffle(available);
+    List<Card> assigned = available.stream().limit(getReview_pool()).map(c -> {
+      c.setConfiguration(this);
+      c.setReviewStatus("currently being reviewed");
+      return c;
+    }).collect(Collectors.toList());
+    cardController.save(assigned);
+  }
+
 }
 

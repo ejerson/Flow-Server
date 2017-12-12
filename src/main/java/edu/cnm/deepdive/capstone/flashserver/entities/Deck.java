@@ -1,5 +1,6 @@
 package edu.cnm.deepdive.capstone.flashserver.entities;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -13,7 +14,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.TableGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -39,9 +39,8 @@ public class Deck {
   @JoinColumn(name = "user_id")
   private User user;
 
-  @OneToOne(mappedBy = "deck")
-  private Configuration configuration;
-
+  @OneToMany(mappedBy = "deck")
+  private List<Configuration> configurations = new ArrayList<>();
 
   public List<Card> getCards() {
     return cards;
@@ -90,14 +89,6 @@ public class Deck {
     return created;
   }
 
-  public Configuration getConfiguration() {
-    return configuration;
-  }
-
-  public void setConfiguration(Configuration configuration) {
-    this.configuration = configuration;
-  }
-
   public User getUser() {
     return user;
   }
@@ -106,4 +97,12 @@ public class Deck {
     this.user = user;
   }
 
+  public List<Configuration> getConfigurations() {
+    return configurations;
+  }
+
+  public void setConfigurations(
+      List<Configuration> configurations) {
+    this.configurations = configurations;
+  }
 }
