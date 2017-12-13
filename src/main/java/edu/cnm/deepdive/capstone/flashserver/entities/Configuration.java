@@ -46,7 +46,7 @@ public class Configuration {
 
 //  private String reviewStatus;
 
-  private int selectedDeck;
+  private String selectedDeckName;
 
   private int session;
 
@@ -106,12 +106,12 @@ public class Configuration {
     this.review_pool = review_pool;
   }
 
-  public int getSelectedDeck() {
-    return selectedDeck;
+  public String getSelectedDeckName() {
+    return selectedDeckName;
   }
 
-  public void setSelectedDeck(int selectedDeck) {
-    this.selectedDeck = selectedDeck;
+  public void setSelectedDeckName(String selectedDeckName) {
+    this.selectedDeckName = selectedDeckName;
   }
 
   public List<Card> getCards() {
