@@ -6,6 +6,10 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
+/**
+ * Allows for the setting of sessions URL path.
+ */
+
 @RepositoryRestResource(collectionResourceRel = "sessions", path = "sessions")
 public interface SessionController extends PagingAndSortingRepository<Session, Long> {
 }

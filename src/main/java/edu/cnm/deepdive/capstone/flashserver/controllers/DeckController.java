@@ -6,6 +6,9 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
+/**
+ * Allows for the setting of decks URL path.
+ */
 @RepositoryRestResource(collectionResourceRel = "decks", path = "decks")
 public interface DeckController extends PagingAndSortingRepository<Deck, Long> {
 

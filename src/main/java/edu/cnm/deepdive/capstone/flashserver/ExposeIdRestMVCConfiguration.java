@@ -12,6 +12,10 @@ import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurerAdapter;
 import org.springframework.stereotype.Component;
 
+/**
+ * Exposes the Id MVC configuration.
+ */
+
 @Component
 public class ExposeIdRestMVCConfiguration extends RepositoryRestConfigurerAdapter {
 

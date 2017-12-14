@@ -7,6 +7,11 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
+/**
+ * Allows for the setting of card URL path.
+ * Prepares a query to be consumed by the client.
+ */
+
 @RepositoryRestResource(collectionResourceRel = "cards", path = "cards")
 public interface CardController extends PagingAndSortingRepository<Card, Long> {
 

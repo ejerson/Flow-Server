@@ -5,6 +5,11 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Service;
 
+/**
+ * Implements context aware interface.  Allows the configuration entity to be aware of what
+ * controller to use as a way to retrieve cards associated with a given configuration.
+ */
+
 @Service
 public class BeanUtil implements ApplicationContextAware {
 
