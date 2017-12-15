@@ -15,5 +15,6 @@ This is the Spring Boot server system we created to act as our SQL database mana
 * Linux server 2.6.32-042stab120.19 #1 SMP
 
   [FlashMe Server JavaDocs](https://deep-dive-coding-java-cohort-2.github.io/Flow-Server/docs/)
+  [FlashMe App](https://deep-dive-coding-java-cohort-2.github.io/Flash-Flow/)
 
-Server side for capstone project.
+
